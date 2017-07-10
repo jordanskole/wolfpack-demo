@@ -1,0 +1,99 @@
+<h2 class="md-display-1">Your company info - federal tax id</h2>
+<div layout="row">
+  <div flex="40" class="margin-right-15">
+    <p class="md-body-1">
+      This is your federal tax id number, also referred to as an EIN. Eventually we will use this to send a form 1099 to your coaches. You can leave this blank if you don't have an EIN.
+    </p>
+  </div><!-- flex 40 -->
+  <div flex>
+
+    <md-card>
+      <md-list style="padding: 0px">
+        <md-list-item ng-click="$state.go('li.account.company.name', {id: CompanyDetailCtrl.company.$id })" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Company name:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              {{ CompanyDetailCtrl.company.name }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item ng-click="$state.go('li.account.company.phone', {id: CompanyDetailCtrl.company.$id })" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Phone:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              {{ CompanyDetailCtrl.company.phone | tel }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row">
+          <div class="md-list-item-text" flex>
+            <p class="md-body-2">Federal tax ID:</p>
+            <div layout-gt-xs="row" layout="row">
+              <md-input-container class="md-block" flex-gt-xs="80">
+                <label>Federal tax ID</label>
+                <input ng-model="CompanyDetailCtrl.company.tax_id_federal" >
+              </md-input-container>
+            </div>
+            <md-button class="md-secondary md-icon-button md-raised md-primary" ng-click="CompanyDetailCtrl.saveCompany('li.account', 'li.account.company.sid')">
+              <md-icon>check</md-icon>
+            </md-button>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <div layout="row" ng-show="$state.params.action === 'create'">
+      <span flex></span>
+      <md-button class="md-primary" ng-click="$state.go('li.account.company.sid')">
+        Skip this for now &rarr;
+      </md-button>
+    </div>
+
+    <md-card class="margin-top-20" ng-hide="$state.params.action === 'create'">
+      <md-list style="padding: 0px">
+        <md-list-item ng-click="$state.go('li.account.company.sid', {id: CompanyDetailCtrl.company.$id })" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">State Tax ID:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              {{ CompanyDetailCtrl.company.tax_id_state }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item ng-click="$state.go('li.account.company.address', {id: CompanyDetailCtrl.company.$id })" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Address:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              {{ CompanyDetailCtrl.company.address_street}} {{ CompanyDetailCtrl.company.address_street_apt }}<br>
+              {{ CompanyDetailCtrl.company.address_city }} {{ CompanyDetailCtrl.company.address_state }} {{ CompanyDetailCtrl.company.address_zip }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+  </div><!-- flex -->
+</div><!-- row -->
+
+<md-divider ng-if="$state.params.action !=== 'create'" class="margin-top-80"></md-divider>

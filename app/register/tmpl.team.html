@@ -1,0 +1,62 @@
+<form name="registerForm" ng-submit="$state.go('register.club.payment', {id: 'vardar'})">
+  <md-card-title>
+    <md-card-title-text>
+      <div layout="row">
+        <span class="md-headline" flex>Team info</span>
+        <span class="md-headline" flex="10"><small class="float-right">(2/4)</small></span>
+      </div>
+    </md-card-title-text>
+  </md-card-title>
+  <md-progress-linear md-mode="determinate" value="50"></md-progress-linear>
+  <md-card-content layout-padding>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Player first name*</label>
+          <input required ng-model="RegisterClubCtrl.player.firstName" name="firstName">
+          <div ng-messages="registerForm.firstName.$error">
+            <div ng-message="required">First name is required</div>
+          </div>
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Player last name*</label>
+          <input required ng-model="RegisterClubCtrl.player.lastName" name="lastName">
+          <div ng-messages="registerForm.lastName.$error">
+            <div ng-message="required">Last name is required</div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+          <label>Player email</label>
+          <input ng-model="RegisterClubCtrl.player.email" name="email">
+          <div ng-messages="registerForm.email.$error">
+            <div ng-message="required"></div>
+          </div>
+        </md-input-container>
+      </div>
+
+      <div layout-gt-sm="row">
+        <md-input-container class="md-block pad-bottom-20" flex-gt-sm>
+          <label>What team are you registering for?</label>
+          <md-select ng-model="RegisterClubCtrl.player.team">
+            <md-option>
+              U-18 Boys
+            </md-option>
+            <md-option>
+              U-17 Boys Black
+            </md-option>
+            <md-option>
+              U-17 Boys Red
+            </md-option>
+          </md-select>
+        </md-input-container>
+      </div>
+
+  </md-card-content>
+  <md-card-actions layout="row" layout-align="end center">
+    <md-button class="md-accent md-raised" ng-click="$state.go('register.club')">Back</md-button>
+    <md-button type="submit" class="md-accent md-raised" ng-disabled="!RegisterClubCtrl.player.firstName || !RegisterClubCtrl.player.lastName || !RegisterClubCtrl.player.email || !RegisterClubCtrl.player.team">Next</md-button>
+  </md-card-actions>
+</form>

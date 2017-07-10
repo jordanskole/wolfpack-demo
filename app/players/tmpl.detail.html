@@ -1,0 +1,203 @@
+<ui-view>
+  <h2 ng-if="PlayerDetailCtrl.player.first_name" class="md-display-1">{{ PlayerDetailCtrl.player.first_name + ' ' + PlayerDetailCtrl.player.last_name }}'s details</h2>
+  <h2 ng-if="!PlayerDetailCtrl.player.first_name" class="md-display-1">Player Name's details</h2>
+  <div layout="row">
+    <div flex="40" class="margin-right-15">
+      <p class="md-body-1">
+        These are the details for the the coach. It is similar to the detail in the coaches account view.
+      </p>
+    </div>
+    <div flex>
+      <md-card>
+        <md-list class="pad-0">
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.name')">
+            <div flex="35">
+              <p class="md-body-2">Name:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">{{ PlayerDetailCtrl.player.first_name + ' ' + PlayerDetailCtrl.player.last_name }}</p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.email')">
+            <div flex="35">
+              <p class="md-body-2">Email:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">{{ PlayerDetailCtrl.player.email }}</p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.phone')">
+            <div flex="35">
+              <p class="md-body-2">Phone:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">
+                {{ PlayerDetailCtrl.player.phone_cell | tel }}<br>
+                {{ PlayerDetailCtrl.player.phone_work | tel }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.birthday')">
+            <div flex="35">
+              <p class="md-body-2">Birthday:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">
+                {{ PlayerDetailCtrl.player.birthday_month + ' ' + PlayerDetailCtrl.player.birthday_day + ', ' + PlayerDetailCtrl.player.birthday_year }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.gender')">
+            <div flex="35">
+              <p class="md-body-2">Gender:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">{{ PlayerDetailCtrl.player.gender }}</p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item layout="row" ng-click="$state.go('li.players.detail.address')">
+            <div flex="35">
+              <p class="md-body-2">Address:</p>
+            </div>
+            <div flex>
+              <p class="md-body-1">
+                {{ PlayerDetailCtrl.player.address_street + ' ' + PlayerDetailCtrl.player.address_street_2 }}<br>
+                {{ PlayerDetailCtrl.player.address_city }}, {{ PlayerDetailCtrl.player.address_state }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+
+  <md-divider class="margin-top-80"></md-divider>
+
+  <h2 class="md-display-1">Your payments from Player Name</h2>
+  <div layout="row">
+    <div flex="40" class="margin-right-15">
+      <p class="md-body-1">
+        These are all of your payments this player has made.
+      </p>
+      <p class="md-body-1">
+        You have received <strong>$3,600.00</strong> from <strong>Justin Lupenec</strong> for playing on <strong>3 teams</strong> over <strong>3 years</strong>
+      </p>
+    </div>
+    <div flex>
+      <md-card>
+        <md-list class="pad-0">
+          <md-list-item class="md-2-line" ng-click="$state.go('li.payments.detail', {id: '1h91s80xe2'})">
+            <div class="md-list-item-text">
+              <h3><strong>Justin</strong> paid <strong>$1,200.00</strong></h3>
+              <p>for Vardar U-16 Boys Spring on 04/11/16</p>
+              <md-icon class="md-secondary">
+                credit_card
+                <md-tooltip md-direction="top">
+                  via credit card
+                </md-tooltip>
+              </md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-2-line" ng-click="$state.go('li.payments.detail', {id: '1h91s80xe2'})">
+            <div class="md-list-item-text">
+              <h3><strong>Diane</strong> paid <strong>$1,200.00</strong> for <strong>Justin Lupenec</strong></h3>
+              <p>for Vardar Arizona U-18 Boys Spring on 04/11/16</p>
+              <md-icon class="md-secondary">
+                account_balance
+                <md-tooltip md-direction="top">
+                  via ACH transfer
+                </md-tooltip>
+              </md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-2-line" ng-click="$state.go('li.payments.detail', {id: '1h91s80xe2'})">
+            <div class="md-list-item-text">
+              <h3><strong>Justin</strong> paid <strong>$1,200.00</strong></h3>
+              <p>for Vardar Arizona U-18 Boys Black Spring on 04/11/16</p>
+              <md-icon class="md-secondary">
+                credit_card
+                <md-tooltip md-direction="top">
+                  via credit card
+                </md-tooltip>
+              </md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+
+  <md-divider class="margin-top-80"></md-divider>
+
+  <h2 class="md-display-1">Justin's Teams</h2>
+  <div layout="row">
+    <div flex="40" class="margin-right-15">
+      <p class="md-body-1">
+        These are Justin's teams. It is similar to a filtered list of all your teams.
+      </p>
+    </div>
+    <div flex>
+      <h4 class="md-subhead">Current Teams:</h4>
+      <md-card>
+        <md-list class="pad-0">
+          <md-list-item class="md-2-line" ng-click="$state.go('li.teams.detail', {id: '1oi2jc92e2'})">
+            <img class="md-avatar" ng-src="http://placehold.it/100x100/2196F3/ffffff?text=U15">
+            <div class="md-list-item-text">
+              <h3>Boys U15 Vardar</h3>
+              <p>
+                Head coach: Bob Read
+              </p>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+
+      <h4 class="md-subhead">Previous Teams:</h4>
+      <md-card>
+        <md-list class="pad-0">
+          <md-list-item class="md-2-line" ng-click="$state.go('li.teams.detail', {id: '1oi2jc92e2'})">
+            <img class="md-avatar" ng-src="http://placehold.it/100x100/2196F3/ffffff?text=U15">
+            <div class="md-list-item-text">
+              <h3>Boys U17 Vardar - Spring '15</h3>
+              <p>
+                Head coach: Bob Read
+              </p>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-2-line" ng-click="$state.go('li.teams.detail', {id: '1oi2jc92e2'})">
+            <img class="md-avatar" ng-src="http://placehold.it/100x100/2196F3/ffffff?text=U15">
+            <div class="md-list-item-text">
+              <h3>Boys U15 Vardar - Fall '15</h3>
+              <p>
+                Head Coach: Lucian Popescu
+              </p>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+
+  <md-divider class="margin-top-80"></md-divider>
+</ui-view>

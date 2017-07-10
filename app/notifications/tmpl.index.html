@@ -1,0 +1,79 @@
+<div layout="row">
+  <div flex="90" flex-offset="5">
+    <h2 class="md-display-1">Your next steps</h2>
+    <div layout="row">
+      <div flex="40" class="margin-right-15">
+        <p class="md-body-1">
+          These are your most recent payments both inbound and outbound.
+        </p>
+      </div>
+      <div flex>
+        <md-card>
+          <md-list class="pad-0">
+            <md-list-item class="md-2-line" ng-click="$state.go('li.account.name', {action: 'create'})">
+              <md-checkbox ng-model="NotificationIndexCtrl.account" aria-label="Has Account?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Fill in your account details</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+
+            <md-list-item ng-if="!NotificationIndexCtrl.hasCompany" class="md-2-line" ng-click="$state.go('li.account.companies')">
+              <md-checkbox ng-model="NotificationIndexCtrl.hasCompany" aria-label="Has Company?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Add a company to your account</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-if="NotificationIndexCtrl.hasCompany" class="md-2-line" ng-click="$state.go('li.account.company.name', {id: NotificationIndexCtrl.company.$id, action: 'create' })">
+              <md-checkbox ng-model="NotificationIndexCtrl.hasCompany" aria-label="Has Company?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Add a company to your account</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+
+            <md-list-item ng-if="AccountCtrl.hasCompany" class="md-2-line" ng-click="$state.go('li.teams')">
+              <md-checkbox ng-model="NotificationIndexCtrl.teams" aria-label="Has Teams?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Add your first team</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-if="AccountCtrl.hasCompany" class="md-2-line" ng-click="$state.go('li.coaches')">
+              <md-checkbox ng-model="NotificationIndexCtrl.coaches" aria-label="Has Coaches?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Invite your coaches</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-if="AccountCtrl.hasCompany" class="md-2-line" ng-click="$state.go('li.players')">
+              <md-checkbox ng-model="NotificationIndexCtrl.players" aria-label="Has Players?"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Invite your first players</h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item class="md-2-line">
+              <md-checkbox ng-model="NotificationIndexCtrl.bank" ng-click="NotificationIndexCtrl.comingSoon()"></md-checkbox>
+              <div class="md-list-item-text" layout="column">
+                <h3>Connect your bank account</h3>
+                <p>
+                  Disabled until a later release
+                </p>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</div>

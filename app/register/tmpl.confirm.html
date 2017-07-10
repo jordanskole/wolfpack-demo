@@ -1,0 +1,21 @@
+<md-card-title>
+  <md-card-title-text>
+    <div layout="row">
+      <span class="md-headline" flex>Confirm payment</span>
+      <span class="md-headline" flex="10"><small class="float-right">(4/4)</small></span>
+    </div>
+  </md-card-title-text>
+</md-card-title>
+<md-progress-linear md-mode="determinate" value="100"></md-progress-linear>
+<md-card-content layout-padding>
+  <p class="md-subhead">
+    You are about to be charged $<strong>1,200</strong> team registration fee to <strong>Vardar Soccer Club</strong> to your credit card ending in <strong>9900</strong>.
+  </p>
+  <p class="md-subhead">
+    This registers <strong>Justin Lupenec</strong> to play on the <strong>Boys U-14 Vardar Black</strong> team.
+  </p>
+</md-card-content>
+<md-card-actions layout="row" layout-align="end center">
+  <md-button class="md-accent md-raised" ng-click="$state.go('register.club.payment', { id: 'vardar'})">Back</md-button>
+  <md-button class="md-accent md-raised" ng-click="RegisterClubCtrl.register()">Confirm</md-button>
+</md-card-actions>

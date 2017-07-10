@@ -1,0 +1,90 @@
+<h2 class="md-display-1">Your personal info - email</h2>
+<div layout="row">
+  <div flex="40" class="margin-right-15">
+    <p class="md-body-1">
+      Manage this basic information — your name, email, and phone number — to help others find you on Google products like Hangouts, Gmail, and Maps, and make it easier to get in touch.
+    </p>
+  </div><!-- flex 40 -->
+  <div flex>
+
+    <md-card>
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.account.name')">
+          <div flex="35">
+            <p class="md-body-2">Name:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ AccountDetailCtrl.manager.first_name + ' ' + AccountDetailCtrl.manager.last_name }}</p>
+          </div>
+          <md-icon>edit</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row">
+          <div class="md-list-item-text" flex>
+            <p class="md-body-2">Email:</p>
+            <div layout-gt-xs="row" layout="row">
+              <md-input-container class="md-block" flex-gt-xs="80">
+                <label>Email</label>
+                <input ng-model="AccountDetailCtrl.me.password.email" disabled>
+              </md-input-container>
+            </div>
+            <md-button class="md-secondary md-icon-button md-raised md-primary" ng-click="AccountDetailCtrl.saveManager('li.account', 'li.account.phone')">
+              <md-icon>check</md-icon>
+            </md-button>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20" ng-hide="$state.params.action == 'create'">
+      <md-list class="pad-0">
+        <md-list-item ng-click="$state.go('li.account.phone')" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Phone:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              {{ AccountDetailCtrl.manager.phone_cell | tel }}<br>
+              {{ AccountDetailCtrl.manager.phone_work | tel }}
+            </p>
+          </div>
+          <md-icon>edit</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Birthday:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              July 16, 1985
+            </p>
+          </div>
+          <md-icon>edit</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+          <div flex="35">
+            <p class="md-body-2">Address:</p>
+          </div>
+          <div flex class="md-list-item-text">
+            <p class="md-body-1">
+              169 Saxon Ct #2<br>
+              Rochester Hills, MI 48307
+            </p>
+          </div>
+          <md-icon>edit</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+  </div><!-- flex -->
+</div><!-- row -->
+
+<md-divider ng-hide="$state.params.action == 'create'" class="margin-top-80"></md-divider>

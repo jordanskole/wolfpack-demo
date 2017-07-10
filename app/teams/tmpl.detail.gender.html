@@ -1,0 +1,90 @@
+<h2 class="md-display-1">Your team details</h2>
+<div layout="row">
+  <div flex="40">
+    <p class="md-body-1">
+      These are the details for the current team. It is similar to the account view.
+    </p>
+  </div>
+  <div flex>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.teams.detail.name')">
+          <div flex="35">
+            <p class="md-body-2">Team name:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ TeamDetailCtrl.team.name }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item layout="row" ng-click="$state.go('li.teams.detail.age')">
+          <div flex="35">
+            <p class="md-body-2">Age:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">U-{{ TeamDetailCtrl.team.age }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row">
+          <div class="md-list-item-text" flex>
+            <p class="md-body-2">Team gender:</p>
+            <div layout-gt-xs="row" layout="row">
+              <md-input-container class="md-block" flex-gt-xs="80">
+                <label>What is your team's gender?</label>
+                <md-select ng-model="TeamDetailCtrl.team.gender">
+                  <md-option value="male">
+                    Male
+                  </md-option>
+                  <md-option value="female">
+                    Female
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <md-button class="md-secondary md-icon-button md-raised md-primary" ng-click="TeamDetailCtrl.saveTeam('li.teams.detail', 'li.teams.detail.sport')">
+              <md-icon>check</md-icon>
+            </md-button>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20" ng-hide="$state.params.action == 'create'">
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.teams.detail.sport')">
+          <div flex="35">
+            <p class="md-body-2">Sport:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ TeamDetailCtrl.team.sport | capitalize }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item layout="row" ng-click="$state.go('li.teams.detail.address')">
+          <div flex="35">
+            <p class="md-body-2">Address:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">
+              {{ TeamDetailCtrl.team.address_street }} {{ TeamDetailCtrl.team.address_street_2 }}<br>
+              {{ TeamDetailCtrl.team.address_city }}, {{ TeamDetailCtrl.team.address_state }} {{ TeamDetailCtrl.team.address_zip }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+  </div>
+</div>

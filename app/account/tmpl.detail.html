@@ -1,0 +1,282 @@
+<div id="personal-info" layout="row">
+  <div flex="90" flex-offset="5" ui-view>
+
+    <h2 class="md-display-1">Your personal info</h2>
+    <div layout="row">
+      <div flex="40" class="margin-right-15">
+        <p class="md-body-1">
+          Manage this basic information — your name, email, and phone number — to help others find you on Google products like Hangouts, Gmail, and Maps, and make it easier to get in touch.
+        </p>
+      </div><!-- flex 40 -->
+      <div flex>
+        <md-card>
+          <md-list style="padding: 0px;">
+            <md-list-item layout="row" ng-click="$state.go('li.account.name')">
+              <div flex="35">
+                <p class="md-body-2">Name:</p>
+              </div>
+              <div flex>
+                <p class="md-body-1">{{ AccountDetailCtrl.manager.first_name + ' ' + AccountDetailCtrl.manager.last_name }}</p>
+              </div>
+              <md-icon>edit</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item layout="row" ng-click="$state.go('li.account.email')">
+              <div flex="35">
+                <p class="md-body-2">Email:</p>
+              </div>
+              <div flex>
+                <p class="md-body-1">{{ AccountDetailCtrl.me.password.email }}</p>
+              </div>
+              <md-icon>edit</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.phone')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Phone:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ AccountDetailCtrl.manager.phone_cell | tel }}<br>
+                  {{ AccountDetailCtrl.manager.phone_work | tel }}
+                </p>
+              </div>
+              <md-icon>edit</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.birthday')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Birthday:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ AccountDetailCtrl.manager.birthday_month + ' ' + AccountDetailCtrl.manager.birthday_day + ' ' + AccountDetailCtrl.manager.birthday_year }}
+                </p>
+              </div>
+              <md-icon>edit</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.address')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Address:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ AccountDetailCtrl.manager.address_street }} {{ AccountDetailCtrl.manager.address_street_apt }}<br>
+                  {{ AccountDetailCtrl.manager.address_city }}, {{ AccountDetailCtrl.manager.address_state }} {{ AccountDetailCtrl.manager.address_zip }}
+                </p>
+              </div>
+              <md-icon>edit</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div><!-- flex -->
+    </div><!-- row -->
+
+    <md-divider class="margin-top-80"></md-divider>
+
+    <h2 class="md-display-1">Your company info</h2>
+    <div layout="row">
+      <div flex="40" class="margin-right-15">
+        <p class="md-body-1">
+          Manage this basic information — your name, email, and phone number — to help others find you on Google products like Hangouts, Gmail, and Maps, and make it easier to get in touch.
+        </p>
+      </div><!-- flex 40 -->
+      <div flex>
+
+        <md-card ng-if="AccountDetailCtrl.manager.companies.length == 0">
+          <md-list class="pad-0">
+            <md-list-item class="md-2-line" ng-click="AccountDetailCtrl.createCompany()">
+              <md-icon class="md-avatar-icon md-warn">warning</md-icon>
+              <div class="md-list-item-text">
+                <h3>
+                  You don't have a company yet. <strong>Create one now.</strong>
+                </h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+            </md-list-item>
+          </md-list>
+        </md-card>
+
+        <md-card ng-if="AccountDetailCtrl.manager.companies.length > 0" ng-repeat="company in AccountDetailCtrl.companies">
+          <md-list style="padding: 0px">
+            <md-list-item ng-click="$state.go('li.account.company.name', {id: company.$id })" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Company name:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ company.name }}
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.company.phone', {id: company.$id })" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Phone:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ company.phone | tel }}
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.company.fid', {id: company.$id })" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Federal Tax ID:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ company.tax_id_federal }}
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.company.sid', {id: company.$id })" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">State Tax ID:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ company.tax_id_state }}
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account.company.address', {id: company.$id })" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Address:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  {{ company.address_street }} {{ company.address_street_apt}}<br>
+                  {{ company.address_city }} {{ company.address_state }} {{ company.address_zip }}
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+
+      </div><!-- flex -->
+    </div><!-- row -->
+
+    <md-divider class="margin-top-80"></md-divider>
+
+    <h2 class="md-display-1">Your bank info</h2>
+    <div layout="row">
+      <div flex="40" class="margin-right-15">
+        <p class="md-body-1">
+          Connect one or more bank accounts, in order to deposit payments and pay vendors and coaches.
+        </p>
+      </div><!-- flex 40 -->
+      <div flex>
+        <md-card>
+          <md-list style="padding: 0px">
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Nickname:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  Primary account
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Primary bank:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  Ukrainian Future Credit Union
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Routing number:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  272479663
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Account number:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  5551234
+                </p>
+              </div>
+              <md-icon>
+                verified_user
+                <md-tooltip md-direction="top">
+                  Verified account
+                </md-tooltip>
+              </md-icon>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Account type:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  Company (or individual)
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Signatory:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  Morris Lupenec
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+            <md-list-item ng-click="$state.go('li.account')" class="md-long-text">
+              <div flex="35">
+                <p class="md-body-2">Address:</p>
+              </div>
+              <div flex class="md-list-item-text">
+                <p class="md-body-1">
+                  26495 Ryan Rd,<br>
+                  Warren, MI 48091
+                </p>
+              </div>
+              <md-icon>chevron_right</md-icon>
+              <md-divider></md-divider>
+            </md-list-item>
+          </md-list>
+        </md-card>
+      </div><!-- flex -->
+    </div><!-- row -->
+
+    <md-divider class="margin-top-80"></md-divider>
+
+  </div>
+</div>

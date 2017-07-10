@@ -1,0 +1,76 @@
+<div id="teams-index" layout="row">
+  <div ui-view flex="90" flex-offset="5">
+
+    <h2 class="md-display-1">Your coaches</h2>
+    <div layout="row">
+      <div flex="40" class="margin-right-15">
+        <p class="md-body-1">
+          Manage all of your teams from this view, it doesnt matter if you have one or one hundred.
+        </p>
+        <p class="md-body-1">
+          Use the settings below to sort and filter by specific parameters.
+        </p>
+      </div>
+      <div flex>
+        <md-card>
+          <md-list class="pad-0">
+            <md-list-item ng-if="CoachIndexCtrl.coaches.length === 0" class="md-2-line" ng-click="CoachIndexCtrl.inviteCoach()">
+              <md-icon class="md-warn">warning</md-icon>
+              <div class="md-list-item-text">
+                <h3>
+                  You don't have any coaches. <strong>Invite one now.</strong>
+                </h3>
+                <md-icon class="md-secondary">send</md-icon>
+              </div>
+            </md-list-item>
+
+            <md-list-item ng-if="CoachIndexCtrl.coaches.length > 0" class="md-2-line" ng-click="CoachIndexCtrl.inviteCoach()">
+              <md-icon class="md-primary">person_add</md-icon>
+              <div class="md-list-item-text">
+                <h3>
+                  <strong>Invite a new coach.</strong>
+                </h3>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+            </md-list-item>
+
+          </md-list>
+        </md-card>
+
+        <md-card class="margin-top-20">
+          <md-list class="pad-0">
+            <md-list-item ng-repeat="coach in CoachIndexCtrl.coaches" class="md-3-line" ng-click="$state.go('li.coaches.detail', {id: coach.$id })">
+              <!-- <img class="md-avatar" ng-src="/assets/images/morris.jpg"> -->
+              <div class="md-list-item-text">
+                <h3>{{ coach.first_name + ' ' + coach.last_name }}</h3>
+                <!-- <md-chips ng-model="ctrl.fruitNames" readonly="ctrl.readonly"></md-chips> -->
+                <p>
+                  {{ coach.address_city }}, {{ coach.address_state }}
+                </p>
+                <p>
+                  <span class="md-caption">Boys U-18 Black</span>, <span class="md-caption">Boys U-17 Black</span>
+                </p>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item>
+            <!-- <md-list-item class="md-3-line" ng-click="$state.go('li.coaches.detail', {id: '1oi2jc92e2'})">
+              <img class="md-avatar" ng-src="/assets/images/bob.jpg">
+              <div class="md-list-item-text">
+                <h3>Bob Read</h3>
+                <p>
+                  Rochester Hills, MI
+                </p>
+                <p>
+                  <span class="md-caption">Girls U-18 Black</span>, <span class="md-caption">Girls U-17 Black</span>
+                </p>
+                <md-icon class="md-secondary">chevron_right</md-icon>
+              </div>
+              <md-divider></md-divider>
+            </md-list-item> -->
+          </md-list>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</div>

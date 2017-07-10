@@ -1,0 +1,22 @@
+/*
+ * Side menu themes for selected menu items
+ *
+ */
+
+a.md-button.md-default-side-menu-theme[disabled],
+.md-button.md-default-side-menu-theme[disabled],
+md-icon.md-default-side-menu-theme.md-primary {
+  color: #0097A7 !important;
+}
+
+a.md-button.md-teams-side-menu-theme[disabled],
+.md-button.md-teams-side-menu-theme[disabled],
+md-icon.md-teams-side-menu-theme.md-primary {
+  color: #0097A7 !important;
+}
+
+a.md-button.md-account-side-menu-theme[disabled],
+.md-button.md-account-side-menu-theme[disabled],
+md-icon.md-account-side-menu-theme.md-primary {
+  color: #1976D2 !important;
+}

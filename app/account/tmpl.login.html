@@ -1,0 +1,16 @@
+<md-content layout-fill style="background: url('/assets/images/field.jpg') no-repeat center center; background-size: cover;">
+  <div flex layout="row">
+    <md-card layout-padding flex="30" flex-offset="70" flex-sm="90" flex-md="66" md-theme="default">
+      <h1 class="md-headline">Login</h1>
+      <md-input-container class="md-block">
+        <label>Email:</label>
+        <input type="email" ng-model="LoginCtrl.user.email">
+      </md-input-container>
+      <md-input-container class="md-block">
+        <label>Password:</label>
+        <input type="password" ng-model="LoginCtrl.user.password">
+      </md-input-container>
+      <md-button class="md-primary md-raised" ng-click="LoginCtrl.loginWithPassword()">Login</md-button>
+    </md-card>
+  </div>
+</md-content>

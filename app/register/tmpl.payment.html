@@ -1,0 +1,91 @@
+<md-card-title>
+  <md-card-title-text>
+    <div layout="row">
+      <span class="md-headline" flex>Payment info</span>
+      <span class="md-headline" flex="10"><small class="float-right">(3/4)</small></span>
+    </div>
+  </md-card-title-text>
+</md-card-title>
+<md-progress-linear md-mode="determinate" value="75"></md-progress-linear>
+<md-card-content layout-padding>
+  <form name="paymentForm">
+    <p class="md-body-1">
+      How do you want to pay your registration fee?
+    </p>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Payment Method</label>
+        <md-select ng-model="RegisterClubCtrl.payment.paymentMethod" name="paymentMethod">
+          <md-option value="visa" selected>Visa</md-option>
+          <md-option value="amex">American Express</md-option>
+          <md-option value="masterCard">Master Card</md-option>
+          <md-option value="ach" disabled>Checking Account (coming soon)</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+      <md-input-container class="md-block" flex-gt-sm>
+        <label>Card number*</label>
+        <input required ng-model="RegisterClubCtrl.payment.creditCard" name="creditCard" minlength="16" maxlength="16">
+        <div ng-messages="paymentForm.creditCard.$error">
+          <div ng-message="required">Credit card</div>
+          <div ng-message="minlength">Must be a valid credit card</div>
+        </div>
+      </md-input-container>
+    </div>
+
+    <div layout-gt-sm="row">
+      <md-input-container flex="30" style="margin-right: 10px;" >
+        <label>Exp. month</label>
+        <md-select ng-model="RegisterClubCtrl.payment.month">
+          <md-option value="01">Jan</md-option>
+          <md-option value="02">Feb</md-option>
+          <md-option value="03">Mar</md-option>
+          <md-option value="04">Apr</md-option>
+          <md-option value="05">May</md-option>
+          <md-option value="06">Jun</md-option>
+          <md-option value="07">Jul</md-option>
+          <md-option value="08">Aug</md-option>
+          <md-option value="09">Sep</md-option>
+          <md-option value="10">Oct</md-option>
+          <md-option value="11">Nov</md-option>
+          <md-option value="12">Dec</md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="35" style="margin-right: 10px;">
+        <label>Exp. year</label>
+        <md-select ng-model="RegisterClubCtrl.payment.year">
+          <md-option value="2016">2016</md-option>
+          <md-option value="2017">2017</md-option>
+          <md-option value="2018">2018</md-option>
+          <md-option value="2019">2019</md-option>
+          <md-option value="2020">2020</md-option>
+          <md-option value="2021">2021</md-option>
+          <md-option value="2022">2022</md-option>
+          <md-option value="2023">2023</md-option>
+          <md-option value="2024">2024</md-option>
+          <md-option value="2025">2025</md-option>
+          <md-option value="2026">2026</md-option>
+          <md-option value="2027">2027</md-option>
+        </md-select>
+      </md-input-container>
+
+      <span flex></span>
+
+      <md-input-container class="md-block" flex-gt-sm flex="30">
+        <label>CVC*</label>
+        <input ng-model="RegisterClubCtrl.payment.cvc" name="cvc" minlength="3" maxlength="4">
+        <div ng-messages="paymentForm.cvc.$error">
+          <div ng-message="required"></div>
+        </div>
+      </md-input-container>
+    </div>
+
+  </form>
+</md-card-content>
+<md-card-actions layout="row" layout-align="end center">
+  <md-button class="md-accent md-raised" ng-click="$state.go('register.club.team')">Back</md-button>
+  <md-button class="md-accent md-raised" ng-disabled="!RegisterClubCtrl.payment.paymentMethod || !RegisterClubCtrl.payment.creditCard || !RegisterClubCtrl.payment.month || !RegisterClubCtrl.payment.year || !RegisterClubCtrl.payment.cvc" ng-click="$state.go('register.club.confirm', { id: 'vardar'})">Submit payment</md-button>
+</md-card-actions>

@@ -1,0 +1,59 @@
+<h2 class="md-display-1">Registration details</h2>
+<div layout="row">
+  <div flex="40">
+    <p class="md-body-1 pad-right-10">
+      Helper text for registration details
+    </p>
+  </div>
+  <div flex>
+
+    <md-card>
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.teams.detail.fee')">
+          <div flex="35">
+            <p class="md-body-2">Registration fee:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ TeamDetailCtrl.team.fee | currency}}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row">
+          <div class="md-list-item-text" flex>
+            <p class="md-body-2">What is the max number of payments a player can make? </p>
+            <div layout-gt-xs="row" layout="row">
+              <md-input-container class="md-block" flex-gt-xs="80">
+                <label>Number of playments:</label>
+                <md-select ng-model="TeamDetailCtrl.team.max_payments">
+                  <md-option value="1">
+                    One
+                  </md-option>
+                  <md-option value="2">
+                    Two
+                  </md-option>
+                  <md-option value="3">
+                    Three
+                  </md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <md-button class="md-secondary md-icon-button md-raised md-primary" ng-click="TeamDetailCtrl.saveTeam('li.teams.detail', 'li.teams.detail.sport')">
+              <md-icon>check</md-icon>
+            </md-button>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+  </div>
+</div>
+
+<md-divider class="margin-top-80"></md-divider>

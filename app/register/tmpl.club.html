@@ -1,0 +1,103 @@
+<div layout="row">
+  <div flex="80" flex-offset="10" class="margin-top-60">
+    <h1 class="md-display-1">Register for Team Name</h1>
+    <div layout="row">
+      <div flex="40">
+        <p class="md-body-1">
+          Create an account to complete your registration for Team Name.
+        </p>
+        <p class="md-body-1">
+          If you are a guardian registering on behalf of a child don't worry, you will be able to fill in their information on the next screen.
+        </p>
+      </div>
+      <div flex flex-offset="10">
+        <md-card ui-view md-theme="default">
+          <form name="registerForm" ng-submit="$state.go('register.club.team', {id: 'vardar'})">
+            <md-card-title>
+              <md-card-title-text>
+                <div layout="row">
+                  <span class="md-headline" flex>Basic info</span>
+                  <span class="md-headline" flex="10"><small class="float-right">(1/4)</small></span>
+                </div>
+              </md-card-title-text>
+            </md-card-title>
+            <md-progress-linear md-mode="determinate" value="25"></md-progress-linear>
+            <md-card-content layout-padding>
+
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>First name*</label>
+                    <input required ng-model="RegisterClubCtrl.user.firstName" name="firstName">
+                    <div ng-messages="registerForm.firstName.$error">
+                      <div ng-message="required">First name is required</div>
+                    </div>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Last name*</label>
+                    <input required ng-model="RegisterClubCtrl.user.lastName" name="lastName">
+                    <div ng-messages="registerForm.lastName.$error">
+                      <div ng-message="required">Last name is required</div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block pad-bottom-20" flex-gt-sm>
+                    <label>You are registering as...</label>
+                    <md-select ng-model="RegisterClubCtrl.user.type">
+                      <md-option>
+                        A player
+                      </md-option>
+                      <md-option>
+                        A parent
+                      </md-option>
+                      <md-option>
+                        A coach
+                      </md-option>
+                    </md-select>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Email*</label>
+                    <input required name="email" ng-model="RegisterClubCtrl.user.email" ng-pattern="/^.+@.+\..+$/">
+                    <div ng-messages="registerForm.email.$error">
+                      <div ng-message="required">Email is required</div>
+                      <div ng-message="pattern">Must be a email</div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div layout-gt-sm="row">
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Password*</label>
+                    <input type="password" name="password" required ng-model="RegisterClubCtrl.user.password" minlength="6">
+                    <div ng-messages="registerForm.password.$error">
+                      <div ng-message="minlength">Not long enough</div>
+                      <div ng-message="minlength">Password is required</div>
+                    </div>
+                  </md-input-container>
+                  <md-input-container class="md-block" flex-gt-sm>
+                    <label>Confirm password*</label>
+                    <input type="password" required ng-model="RegisterClubCtrl.user.passwordConfirm" name="passwordConfirm" ng-pattern="RegisterClubCtrl.user.password">
+                    <div ng-messages="registerForm.passwordConfirm.$error">
+                      <div ng-message="pattern">Passwords don't match</div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+              <!-- <md-button class="md-accent md-raised" ng-disabled="!RegisterClubCtrl.user.firstName || !RegisterClubCtrl.user.lastName || !RegisterClubCtrl.user.email || !RegisterClubCtrl.user.password || !RegisterClubCtrl.user.passwordConfirm" ng-click="RegisterClubCtrl.register()">Next</md-button> -->
+              <md-button type="submit" class="md-accent md-raised" ng-disabled="!RegisterClubCtrl.user.firstName || !RegisterClubCtrl.user.lastName || !RegisterClubCtrl.user.email || !RegisterClubCtrl.user.password || !RegisterClubCtrl.user.passwordConfirm">Next</md-button>
+            </md-card-actions>
+          </form>
+        </md-card>
+      </div>
+
+    </div>
+
+    <md-divider class="margin-top-80"></md-divider>
+  </div>
+</div>

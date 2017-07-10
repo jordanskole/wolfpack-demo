@@ -1,0 +1,124 @@
+<h2 ng-if="PlayerDetailCtrl.player.first_name" class="md-display-1">{{ PlayerDetailCtrl.player.first_name + ' ' + PlayerDetailCtrl.player.last_name }}'s details</h2>
+<h2 ng-if="!PlayerDetailCtrl.player.first_name" class="md-display-1">Player Name's details</h2>
+<div layout="row">
+  <div flex="40" class="margin-right-15">
+    <p class="md-body-1">
+      These are the details for the the player. It is similar to the detail in the coaches account view.
+    </p>
+  </div>
+  <div flex>
+
+    <md-card>
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.players.detail.name')">
+          <div flex="35">
+            <p class="md-body-2">Name:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ PlayerDetailCtrl.player.first_name + ' ' + PlayerDetailCtrl.player.last_name }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item layout="row" ng-click="$state.go('li.players.detail.email')">
+          <div flex="35">
+            <p class="md-body-2">Email:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ PlayerDetailCtrl.player.email }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item layout="row" ng-click="$state.go('li.players.detail.phone')">
+          <div flex="35">
+            <p class="md-body-2">Phone:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">
+              {{ PlayerDetailCtrl.player.phone_cell | tel }}<br>
+              {{ PlayerDetailCtrl.player.phone_work | tel }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row">
+          <div class="md-list-item-text" flex>
+            <p class="md-body-2">Birthday:</p>
+            <div class="pad-bottom-30" layout-gt-xs="row">
+              <md-input-container flex="30">
+                <label>Month</label>
+                <md-select ng-model="PlayerDetailCtrl.player.birthday_month">
+                  <md-option>January</md-option>
+                  <md-option>February</md-option>
+                  <md-option>March</md-option>
+                  <md-option>April</md-option>
+                  <md-option>May</md-option>
+                  <md-option>June</md-option>
+                  <md-option>July</md-option>
+                  <md-option>August</md-option>
+                  <md-option>September</md-option>
+                  <md-option>October</md-option>
+                  <md-option>November</md-option>
+                  <md-option>December</md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container>
+                <label>Day</label>
+                <md-select ng-model="PlayerDetailCtrl.player.birthday_day">
+                  <md-option ng-repeat="i in PlayerDetailCtrl.range(31) track by $index" value="{{ $index + 1 }}">{{ $index + 1 }}</md-option>
+                </md-select>
+              </md-input-container>
+              <md-input-container>
+                <label>Year</label>
+                <md-select ng-model="PlayerDetailCtrl.player.birthday_year">
+                  <md-option ng-repeat="i in PlayerDetailCtrl.range(75) track by $index" value="{{ $index + 1950 }}">{{ $index + 1950 }}</md-option>
+                </md-select>
+              </md-input-container>
+            </div>
+            <md-button class="md-secondary md-icon-button md-raised md-primary" ng-click="PlayerDetailCtrl.savePlayer('li.players.detail')">
+              <md-icon>check</md-icon>
+            </md-button>
+          </div>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+
+    <md-card class="margin-top-20">
+      <md-list class="pad-0">
+        <md-list-item layout="row" ng-click="$state.go('li.players.detail.gender')">
+          <div flex="35">
+            <p class="md-body-2">Gender:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">{{ PlayerDetailCtrl.player.gender }}</p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+        <md-list-item layout="row" ng-click="$state.go('li.players.detail.address')">
+          <div flex="35">
+            <p class="md-body-2">Address:</p>
+          </div>
+          <div flex>
+            <p class="md-body-1">
+              {{ PlayerDetailCtrl.player.address_street + ' ' + PlayerDetailCtrl.player.address_street_2 }}<br>
+              {{ PlayerDetailCtrl.player.address_city}}, {{ PlayerDetailCtrl.player.address_state }}
+            </p>
+          </div>
+          <md-icon>chevron_right</md-icon>
+          <md-divider></md-divider>
+        </md-list-item>
+      </md-list>
+    </md-card>
+  </div>
+</div>
+
+<md-divider class="margin-top-80"></md-divider>

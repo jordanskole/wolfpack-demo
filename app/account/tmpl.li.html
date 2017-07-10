@@ -1,0 +1,111 @@
+<div layout="row" flex md-theme="{{ $state.current.data.theme }}">
+  <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-disable-backdrop md-whiteframe="4">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="AccountCtrl.toggleSidenav()" hide-gt-md>
+          <md-icon>menu</md-icon>
+        </md-button>
+        <h1>Club Manager</h1>
+      </div>
+    </md-toolbar>
+    <md-content>
+      <md-list flex>
+        <div ng-if="AccountCtrl.hasCompany" md-theme="default-side-menu">
+          <md-subheader class="md-no-sticky md-primary">
+            <md-icon class="md-primary md-caption">monetization_on</md-icon>
+            Payments:
+          </md-subheader>
+          <md-list-item ng-click="$state.go('li.payments')" md-ink-ripple="#009688" ng-disabled="$state.current.name == 'li.payments'">
+            <p>
+              Your payments
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.payments'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.payments.create')" md-ink-ripple="#009688" ng-disabled="$state.current.name == 'li.payments.create'">
+            <p>
+              Record a manual payment
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.payments.create'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+        </div>
+
+        <div ng-if="AccountCtrl.hasCompany" md-theme="teams-side-menu">
+          <md-subheader class="md-no-sticky md-primary" >
+            <md-icon class="md-primary md-caption">people</md-icon>
+            Teams:
+          </md-subheader>
+          <md-list-item ng-click="$state.go('li.teams')" md-ink-ripple="#0097A7" ng-disabled="$state.current.name == 'li.teams'">
+            <p>
+              Your teams
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.teams'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.players')" md-ink-ripple="#0097A7" ng-disabled="$state.current.name == 'li.players'">
+            <p>
+              Your players
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.players'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.coaches')" md-ink-ripple="#0097A7" ng-disabled="$state.current.name == 'li.coaches'">
+            <p>
+              Your coaches
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.coaches'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.teams.create')" md-ink-ripple="#0097A7" ng-disabled="$state.current.name == 'li.teams.create'">
+            <p>
+              Create a new team
+              <md-icon class="md-primary md-secondary" ng-show="$state.current.name == 'li.teams.create'" md-theme="teams-side-menu">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+        </div>
+
+        <div md-theme="account-side-menu">
+          <md-subheader class="md-no-sticky md-primary">
+            <md-icon class="md-primary md-caption">account_balance</md-icon>
+            Account:
+          </md-subheader>
+          <md-list-item ng-click="$state.go('li.account')" md-ink-ripple="#1976D2" ng-disabled="$state.current.name == 'li.account' || $state.$current.parent.self.name == 'li.account'">
+            <p>
+              Your account
+              <md-icon class="md-secondary md-primary" ng-show="$state.current.name == 'li.account' || $state.$current.parent.self.name == 'li.account'">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.notifications')" md-ink-ripple="#1976D2" ng-disabled="$state.current.name == 'li.notifications'">
+            <p>
+              Your notifications
+              <md-icon class="md-secondary md-primary" ng-show="$state.current.name == 'li.notifications'">chevron_right</md-icon>
+            </p>
+          </md-list-item>
+        </div>
+
+      </md-list>
+    </md-content>
+  </md-sidenav>
+  <div layout="column" flex id="content">
+    <md-toolbar layout="row">
+      <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="AccountCtrl.toggleSidenav()" hide-gt-md>
+          <md-icon>menu</md-icon>
+        </md-button>
+        <!-- Add a toggleMenu function to your menuCtrl controller with the following in it
+          $mdSidenav('left').toggle(); -->
+        <h1 flex class="md-toolbar-tools">{{ AccountCtrl.company.name + ' » ' + $state.current.data.title }}</h1>
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon>monetization_on</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="$state.go('li.notifications')">
+          <md-icon>notifications</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings">
+          <md-icon>message</md-icon>
+        </md-button>
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="$state.go('li.account')">
+          <md-icon>settings</md-icon>
+        </md-button>
+        <md-icon md-svg-icon="wolfpack-light" class="margin-10" style="width:36px;height:36px;"></md-icon>
+      </div>
+    </md-toolbar>
+    <md-content ui-view layout="column" flex></md-content>
+  </div>
+</div>

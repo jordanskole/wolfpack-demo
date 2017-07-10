@@ -1,0 +1,38 @@
+<md-content ui-view md-theme="white-bg" flex>
+  <div layout="row">
+    <div flex="60" flex-offset="20">
+      <md-card md-theme="default" class="margin-top-80">
+        <md-list class="pad-0">
+          <md-list-item>
+            <md-input-container class="md-icon-float md-no-errors" flex>
+              <!-- Use floating label instead of placeholder -->
+              <input ng-model="search" type="text" class="md-headline">
+              <md-icon>search</md-icon>
+            </md-input-container>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-2-line" ng-click="$state.go('register.club', {id: 'vardar'})">
+            <div class="md-list-item-text" layout="column">
+              <h3>Vardar Soccer Club - 32 Teams</h3>
+              <p>
+                Rochester Hills, Michigan
+              </p>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item class="md-2-line" ng-click="$state.go('register.club', {id: 'vardar'})">
+            <div class="md-list-item-text" layout="column">
+              <h3>Other Sports Club - 8 Teams</h3>
+              <p>
+                Metro Detroit, Michigan
+              </p>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+    </div>
+  </div>
+</md-content>

@@ -1,0 +1,101 @@
+<ui-view>
+  <h2 class="md-display-1">Your company info</h2>
+  <div layout="row">
+    <div flex="40" class="margin-right-15">
+      <p class="md-body-1">
+        Your company is your brand, sports club, or school, that all of your teams belong to. <br><br>
+        This is who players and their parents will pay their registration fees to, and the origanization that pays the coaches.
+      </p>
+    </div><!-- flex 40 -->
+    <div flex>
+
+      <md-card ng-if="AccountDetailCtrl.manager.companies.length == 0">
+        <md-list class="pad-0">
+          <md-list-item class="md-2-line" ng-click="AccountDetailCtrl.createCompany()">
+            <md-icon class="md-avatar-icon md-warn">warning</md-icon>
+            <div class="md-list-item-text">
+              <h3>
+                You don't have a company yet. <strong>Create one now.</strong>
+              </h3>
+              <md-icon class="md-secondary">chevron_right</md-icon>
+            </div>
+          </md-list-item>
+        </md-list>
+      </md-card>
+
+      <md-card ng-if="AccountDetailCtrl.manager.companies.length > 0" ng-repeat="company in AccountDetailCtrl.companies">
+        <md-list style="padding: 0px">
+          <md-list-item ng-click="$state.go('li.account.company.name')" class="md-long-text">
+            <div flex="35">
+              <p class="md-body-2">Company name:</p>
+            </div>
+            <div flex class="md-list-item-text">
+              <p class="md-body-1">
+                {{ company.name }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.account.company.phone', {id: company.$id })" class="md-long-text">
+            <div flex="35">
+              <p class="md-body-2">Phone:</p>
+            </div>
+            <div flex class="md-list-item-text">
+              <p class="md-body-1">
+                {{ company.phone | tel }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.account.company.fid', {id: company.$id })" class="md-long-text">
+            <div flex="35">
+              <p class="md-body-2">Federal Tax ID:</p>
+            </div>
+            <div flex class="md-list-item-text">
+              <p class="md-body-1">
+                {{ company.tax_id_federal }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.account.company.sid', {id: company.$id })" class="md-long-text">
+            <div flex="35">
+              <p class="md-body-2">State Tax ID:</p>
+            </div>
+            <div flex class="md-list-item-text">
+              <p class="md-body-1">
+                {{ company.tax_id_state }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+          <md-list-item ng-click="$state.go('li.account.company.address', {id: company.$id })" class="md-long-text">
+            <div flex="35">
+              <p class="md-body-2">Address:</p>
+            </div>
+            <div flex class="md-list-item-text">
+              <p class="md-body-1">
+                {{ company.address_street }} {{ company.address_street_apt}}<br>
+                {{ company.address_city }} {{ company.address_state }} {{ company.address_zip }}
+              </p>
+            </div>
+            <md-icon>chevron_right</md-icon>
+            <md-divider></md-divider>
+          </md-list-item>
+        </md-list>
+      </md-card>
+
+      <div layout="row" ng-show="$state.params.action === 'create'">
+        <span flex></span>
+        <md-button class="md-primary" ng-click="$state.go('li.notifications')">
+          Back to next steps &rarr;
+        </md-button>
+      </div>
+
+    </div><!-- flex -->
+  </div><!-- row -->
+</ui-view>

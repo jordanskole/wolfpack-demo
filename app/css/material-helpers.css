@@ -1,0 +1,4 @@
+.md-no-errors > .md-errors-spacer {
+  min-height: 0px;
+  height: 0px;
+}
